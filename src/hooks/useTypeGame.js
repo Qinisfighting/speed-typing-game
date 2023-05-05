@@ -1,13 +1,15 @@
 import {useState, useEffect, useRef} from "react"
 
+
 export default function useTypeGame(startingTime = 10){
   const[formData, setFormData] = useState('')
   const[timeRemaining, setTimeRemaining] = useState(startingTime)
   const[timeIsRunning, setTimeIsRunning] = useState(false)
   const [numOfWords, setNumOfWord] = useState(0)
-  const [isQuoteShow, setIsQuoteShow] = useState(false)
+  //const [quoteShow, setQuoteShow] = useState(true)
   const inputRef = useRef(null)
 
+  
   function handleChange(e) {
     const {value} = e.target
     setFormData(value)  
@@ -20,13 +22,17 @@ export default function useTypeGame(startingTime = 10){
                       .filter(word => word !== "")  //filter to avoid empty string is also counted as 1 word
     return  wordsCount.length  
   }
+
  
+
 function reset(){
+   // window.location.reload(false)
   setTimeIsRunning(true)
   setTimeRemaining(startingTime)
   setFormData('')
   setNumOfWord(0)
-  setIsQuoteShow(true)
+  //setQuoteShow(true)
+  
   console.log(inputRef) //log out the whole textarea object unter current property
   inputRef.current.disabled = false
   inputRef.current.focus() 
@@ -54,7 +60,7 @@ function reset(){
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [timeRemaining, timeIsRunning]);
 
-return {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords,isQuoteShow} 
+return {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords} 
   
 } 
   

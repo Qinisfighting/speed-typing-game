@@ -54,10 +54,13 @@ textarea {
   font-family:  var(--font);
   padding: 15px;  
   line-height: 1.5; 
+  
+  
 }
 
 textarea:active{
-  border:3px inset gray
+  border:3px inset gray;
+
 }
 
 footer {
