@@ -5,6 +5,7 @@ export default function useTypeGame(startingTime = 10){
   const[timeRemaining, setTimeRemaining] = useState(startingTime)
   const[timeIsRunning, setTimeIsRunning] = useState(false)
   const [numOfWords, setNumOfWord] = useState(0)
+  const [isQuoteShow, setIsQuoteShow] = useState(false)
   const inputRef = useRef(null)
 
   function handleChange(e) {
@@ -25,6 +26,7 @@ function reset(){
   setTimeRemaining(startingTime)
   setFormData('')
   setNumOfWord(0)
+  setIsQuoteShow(true)
   console.log(inputRef) //log out the whole textarea object unter current property
   inputRef.current.disabled = false
   inputRef.current.focus() 
@@ -52,7 +54,7 @@ function reset(){
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [timeRemaining, timeIsRunning]);
 
-return {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords} 
+return {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords,isQuoteShow} 
   
 } 
   

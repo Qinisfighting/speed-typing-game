@@ -1,16 +1,20 @@
 import './App.css';
 //import React, {useState, useEffect, useRef} from 'react';
 import useTypeGame from "./hooks/useTypeGame"
+import Quote from "./components/quotes"
 
 
 
 function App() {
 
-  const {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords} = useTypeGame()
+  const {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords,isQuoteShow} = useTypeGame()
+  
+  
   
   return (
     <div className="App">  
-       <h2>How Fast Do You Type?</h2> 
+       <h2>How Fast Do You Type?</h2>
+       <Quote isshow={isQuoteShow}/>
        <textarea value={formData}
                  ref={inputRef}
                  onChange={handleChange}
