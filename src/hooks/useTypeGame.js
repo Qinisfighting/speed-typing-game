@@ -6,7 +6,7 @@ export default function useTypeGame(startingTime = 10){
   const[timeRemaining, setTimeRemaining] = useState(startingTime)
   const[timeIsRunning, setTimeIsRunning] = useState(false)
   const [numOfWords, setNumOfWord] = useState(0)
-  //const [quoteShow, setQuoteShow] = useState(true)
+  const [speed, setSpeed] = useState('')
   const inputRef = useRef(null)
 
   
@@ -23,16 +23,37 @@ export default function useTypeGame(startingTime = 10){
     return  wordsCount.length  
   }
 
- 
+  const [quotes, setQuotes] = useState([])
+  const [randomQuote, setRandomQuote] = useState('')
+  
+  useEffect(() => {
+    async function fetchData(){
+        const response = await fetch('https://type.fit/api/quotes')
+        const data = await response.json()
+        let randomIndex = Math.floor(Math.random() * data.length);
+    setRandomQuote(data[randomIndex])
+        setQuotes(data)
+        
+    }
+    fetchData()
+     
+}, [])
+
+const getNewQuote = () => {
+    let randomIndex = Math.floor(Math.random() * quotes.length);
+    setRandomQuote(quotes[randomIndex])
+
+}  
+
+
 
 function reset(){
-   // window.location.reload(false)
   setTimeIsRunning(true)
   setTimeRemaining(startingTime)
   setFormData('')
   setNumOfWord(0)
-  //setQuoteShow(true)
-  
+  setSpeed('')
+  getNewQuote()
   console.log(inputRef) //log out the whole textarea object unter current property
   inputRef.current.disabled = false
   inputRef.current.focus() 
@@ -45,9 +66,12 @@ function reset(){
       setTimeRemaining(currentTime => {
         // If the current time is 0, then stop the interval and return 0.
         if(currentTime <= 0){
+            
             clearInterval(interval);
             setTimeIsRunning(false);
             setNumOfWord(calWordsCount(formData))
+            
+            setSpeed((10/numOfWords).toFixed(2))
            
             return 0;
         }
@@ -60,7 +84,7 @@ function reset(){
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [timeRemaining, timeIsRunning]);
 
-return {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords} 
+return {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords, randomQuote, speed} 
   
 } 
   

@@ -1,22 +1,27 @@
 import './App.css';
-//import React, {useState, useEffect} from 'react';
 import useTypeGame from "./hooks/useTypeGame"
-import Quote from "./components/quotes"
+
 
 
 
 function App() {
 
-  const {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, numOfWords} = useTypeGame()
- 
+  const {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, randomQuote, speed} = useTypeGame()
   
-
   
   
   return (
     <div className="App">  
        <h2>Type fast and get inspired</h2>
-       <Quote />   
+       <div className='quoteCard'>
+            {randomQuote? (
+              <>
+                <p className='card-text'>&quot;{randomQuote.text}&quot;</p>
+                <h5 className='card-author'> - {randomQuote.author || 'Author Unknown'} -</h5>
+                
+              </>  
+            ) : <h5>Loading...</h5>}
+        </div>  
         
        <textarea value={formData}
                  placeholder={!timeIsRunning&&'Type the exact quote here as fast as you can!'}
@@ -31,12 +36,11 @@ function App() {
                  />
        <button onClick={() => reset()} disabled={timeIsRunning} style={timeIsRunning?{backgroundColor: 'grey'}
                                                                                      :{color: 'lightgray'}}>
-                                         
-        Start</button>
-                                                                                            
+                                   
+        Start</button>                                                                                     
                                        
        <h4>Time remaining: {timeRemaining}</h4>
-       <h2>Word count: {numOfWords} </h2>
+       <h2>Per Word: {speed} s </h2>
     </div>
   );
 }
