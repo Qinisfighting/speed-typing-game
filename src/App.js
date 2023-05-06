@@ -6,7 +6,7 @@ import useTypeGame from "./hooks/useTypeGame"
 
 function App() {
 
-  const {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, randomQuote, speed} = useTypeGame()
+  const {formData, inputRef, handleChange, timeIsRunning, reset, timeRemaining, randomQuote, speed, accuracy} = useTypeGame()
   
   
   
@@ -41,6 +41,7 @@ function App() {
                                        
        <h4>Time remaining: {timeRemaining}</h4>
        <h2>Per Word: {speed} s </h2>
+       <h2>Accuracy: {speed} % </h2>
     </div>
   );
 }
