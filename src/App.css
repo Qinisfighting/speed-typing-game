@@ -21,6 +21,7 @@ body {
   margin:auto;
   padding:10px;
   font-family:  var(--font);
+  letter-spacing: 1px;
   
 }
 
@@ -38,10 +39,11 @@ body {
 
 .quoteCard{
   background-color: rgba(0, 0, 0, 0.11);
-  padding:10px;
+  padding:20px;
   margin:15px auto;
-  width: 89%;
+  width: 86%;
   border-radius: 5px;
+  line-height: 1.5em;
 }
 
 button {
@@ -77,16 +79,16 @@ h3{
 
 textarea {
   border: none;
-  width: 88%;
+  width: 86%;
   margin: 0 auto;
   outline: none;
   height: 200px;
   background: var(--color);
   font-family:  var(--font);
-  padding: 15px;  
+  padding: 20px;  
   line-height: 1.2; 
   border-radius: 5px;
-  font-size: 1.3em; 
+  font-size: 1.2em; 
   
 }
 textarea::placeholder {

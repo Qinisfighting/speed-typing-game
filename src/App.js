@@ -61,7 +61,7 @@ function App() {
         START
       </button>
 
-      <h3>Time Remaining: {timeRemaining}</h3>
+      <h3>Time Remaining: {timeRemaining}s</h3>
       <h3>Per Word: {formData !== "" ? `${speed} s` : ` s`}</h3>
       <h3>Accuracy: {formData !== "" ? `${calAccuracy()} %` : ` %`} </h3>
       <hr />
