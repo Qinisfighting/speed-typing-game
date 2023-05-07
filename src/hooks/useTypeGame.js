@@ -6,7 +6,7 @@ import {
 
 //this file is only for practicing writing custom hook, for this app it should be ideally  put into two component files, but not made into one custom hook.
 
-export default function useTypeGame(startingTime = 20) {
+export default function useTypeGame(startingTime = 30) {
     const [formData, setFormData] = useState('')
     const [timeRemaining, setTimeRemaining] = useState(startingTime)
     const [timeIsRunning, setTimeIsRunning] = useState(false)
@@ -86,7 +86,19 @@ export default function useTypeGame(startingTime = 20) {
     }
 
     useEffect(() => {
-        const wordInSecond = (startingTime / calWordsCount()).toFixed(2)
+        let wordInSecond = () => {
+        if(formData.length === String(randomQuote.text).length){
+            setTimeIsRunning(false)
+            wordInSecond = ((startingTime-timeRemaining) / calWordsCount()).toFixed(2)  
+            setSpeed(wordInSecond)  
+        } else {      
+            wordInSecond = (startingTime / calWordsCount()).toFixed(2)       
+        }
+
+    }
+    console.log(formData.length)
+    console.log(String(randomQuote.text).length)
+        wordInSecond()
         // Run every 1000ms, without needing to rely on a re-render.
         if (timeIsRunning) {
             const interval = setInterval(() => {

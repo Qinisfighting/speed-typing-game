@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Type fast and get inspired</h2>
+      <h2>Quote Typing Trainer</h2>
       <div className="quoteCard">
         {randomQuote ? (
           <>
@@ -34,7 +34,7 @@ function App() {
       <textarea
         value={formData}
         placeholder={
-          timeIsRunning? '' : 'Type the exact quote here as fast as you can!'
+          timeIsRunning? '' : 'Type the exact quote here as fast as you can! (Case, Whitespace and Punctuation are sensitive.)'
         }
         ref={inputRef}
         onChange={handleChange}
