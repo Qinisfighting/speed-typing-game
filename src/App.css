@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
 html, body {
   
   color: var(--color);  
@@ -14,7 +16,7 @@ body {
   background-size: cover;
   background-repeat:no-repeat;
   background-attachment: fixed;
-  font-weight: 700;
+  font-weight: 600;
   max-width: 700px;
   margin:auto;
   padding:10px;
@@ -22,11 +24,17 @@ body {
   
 }
 
+
+
+
 .title{
   font-size: 2em; 
   margin-bottom: 40px;
-  padding:10px;
+  padding:5px;
+  text-shadow: 1px 2px black;
+
 }
+
 
 .quoteCard{
   background-color: rgba(0, 0, 0, 0.11);
@@ -47,6 +55,7 @@ button {
   color:rgb(34, 34, 34);
   font-size: 1.2em;
   border-radius: 5px;
+  text-shadow: 1px 1px black;
   
 }
 
@@ -77,13 +86,13 @@ textarea {
   padding: 15px;  
   line-height: 1.2; 
   border-radius: 5px;
-  font-size: 1em; 
+  font-size: 1.3em; 
   
 }
 textarea::placeholder {
   font-weight: bold; 
   color: rgb(63, 87, 133);
-  font-size: 1.2em; 
+  font-size: 1em; 
 }
 
 

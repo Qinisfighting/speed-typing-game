@@ -1,5 +1,6 @@
 import "./App.css";
 import useTypeGame from "./hooks/useTypeGame";
+import quote from './assets/quote.png'
 
 function App() {
   const {
@@ -16,11 +17,11 @@ function App() {
 
   return (
     <div className="App">
-      <h2 className="title">Quote Typing Trainer</h2>
+         <h2 className="title">Quote Typing Trainer</h2>   
       <div className="quoteCard">
         {randomQuote ? (
           <>
-            <h3 className="card-text">&quot;{randomQuote.text}&quot;</h3>
+            <h3 className="card-text"><img src={quote} alt='quote' style={{width:23, padding:5}}></img> {randomQuote.text}</h3>
             <h3 className="card-author">
               {" "}
               - {randomQuote.author || "Author Unknown"} 
