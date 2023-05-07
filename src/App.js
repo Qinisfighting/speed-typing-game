@@ -16,18 +16,18 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Quote Typing Trainer</h2>
+      <h2 className="title">Quote Typing Trainer</h2>
       <div className="quoteCard">
         {randomQuote ? (
           <>
-            <p className="card-text">&quot;{randomQuote.text}&quot;</p>
-            <h5 className="card-author">
+            <h3 className="card-text">&quot;{randomQuote.text}&quot;</h3>
+            <h3 className="card-author">
               {" "}
-              - {randomQuote.author || "Author Unknown"} -
-            </h5>
+              - {randomQuote.author || "Author Unknown"} 
+            </h3>
           </>
         ) : (
-          <h5>Loading...</h5>
+          <h3>Loading...</h3>
         )}
       </div>
 
@@ -41,11 +41,12 @@ function App() {
         disabled={!timeIsRunning}
         style={
           timeIsRunning
-            ? { backgroundColor: "#07aa59", color: "rgb(26, 25, 25)" }
+            ? { backgroundColor: "rgb(33, 45, 70)", color: "white" }
             : {
                 backgroundColor: "lightgrey",
                 color: "darkgray",
                 cursor: "not-allowed",
+                
               }
         }
       />
@@ -53,16 +54,18 @@ function App() {
         onClick={() => reset()}
         disabled={timeIsRunning}
         style={
-          timeIsRunning ? { backgroundColor: "grey" } : { color: "lightgray" }
+          timeIsRunning ? { backgroundColor: "lightgray", cursor:"not-allowed" } : { color: "var(--font)" }
         }
       >
-        Start
+        START
       </button>
 
-      <h4>Time remaining: {timeRemaining}</h4>
-      <h2>Per Word: {formData !== "" ? `${speed} s` : ` s`}</h2>
-      <h2>Accuracy: {formData !== "" ? `${calAccuracy()} %` : ` %`} </h2>
+      <h3>Time Remaining: {timeRemaining}</h3>
+      <h3>Per Word: {formData !== "" ? `${speed} s` : ` s`}</h3>
+      <h3>Accuracy: {formData !== "" ? `${calAccuracy()} %` : ` %`} </h3>
+      <hr />
     </div>
+    
   );
 }
 export default App;
