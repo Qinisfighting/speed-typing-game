@@ -15,7 +15,7 @@ Improve your typing skills and get inspired with quotes.
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
 ## API
-![Type.fit](https://type.fit/api/quotes)
+[Type.fit](https://type.fit/api/quotes)
 
 
 ## Extras
