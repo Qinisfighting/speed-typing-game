@@ -95,3 +95,10 @@ footer {
   margin: auto;
   padding-bottom: 10px;
 }
+
+@media (max-width: 1000px){
+  body {
+    background-position: center; 
+  }
+
+}
