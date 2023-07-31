@@ -18,7 +18,7 @@ export default function useTypeGame(startingTime = 30) {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://type.fit/api/quotes')
+            const response = await fetch('https://raw.githubusercontent.com/Qinisfighting/Assets-for-all/main/quotes.json')
             const data = await response.json()
             let randomIndex = Math.floor(Math.random() * data.length);
             setRandomQuote(data[randomIndex])
@@ -97,7 +97,7 @@ export default function useTypeGame(startingTime = 30) {
 
     }
     console.log(formData.length)
-    console.log(String(randomQuote.text).length)
+    console.log(String(randomQuote.q).length)
         wordInSecond()
         // Run every 1000ms, without needing to rely on a re-render.
         if (timeIsRunning) {
