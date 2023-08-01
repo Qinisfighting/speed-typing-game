@@ -11,28 +11,28 @@ export default function useTypeGame(startingTime = 30) {
     const [timeRemaining, setTimeRemaining] = useState(startingTime)
     const [timeIsRunning, setTimeIsRunning] = useState(false)
     const [quotes, setQuotes] = useState([])
-    const [randomQuote, setRandomQuote] = useState('')
+    const [randomQuote, setRandomQuote] = useState({})
     const [speed, setSpeed] = useState('')
     const inputRef = useRef(null)
-
+   
 
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('https://raw.githubusercontent.com/Qinisfighting/Assets-for-all/main/quotes.json')
-            const data = await response.json()
-            let randomIndex = Math.floor(Math.random() * data.length);
-            setRandomQuote(data[randomIndex])
+            const data = await response.json()    
+            let randomIndex = Math.floor(Math.random() * quotes.length);  
+            //console.log(data)
             setQuotes(data)
-
+            setRandomQuote(data[randomIndex])
+      
         }
         fetchData()
 
-    }, [])
+    }, [quotes.length])
 
-    const getNewQuote = () => {
-        let randomIndex = Math.floor(Math.random() * quotes.length);
+    const getNewQuote = () => {    
+        let randomIndex = Math.floor(Math.random() * quotes.length);   
         setRandomQuote(quotes[randomIndex])
-
     }
 
     function handleChange(e) {
@@ -52,13 +52,13 @@ export default function useTypeGame(startingTime = 30) {
 
 
     const calAccuracy = () => {
-        const achievedQuote = String(randomQuote.text)
+        const achievedQuote = String(randomQuote.q)
             .split(' ')
             .slice(0, calWordsCount())
+
         const typedQuote = formData
             .split(' ')
         
-
         let correctWordsCount = 0
         for (let i = 0; i < typedQuote.length; i++) {
             if (achievedQuote.indexOf(typedQuote[i]) >= 0) {
@@ -80,14 +80,14 @@ export default function useTypeGame(startingTime = 30) {
         setFormData('')
         setSpeed('')
         getNewQuote()
-        console.log(inputRef) //log out the whole textarea object unter current property
+       // console.log(inputRef) //log out the whole textarea object unter current property
         inputRef.current.disabled = false
         inputRef.current.focus()
     }
 
     useEffect(() => {
         let wordInSecond = () => {
-        if(formData.length === String(randomQuote.text).length){
+        if(formData.length === String(randomQuote.q).length){
             setTimeIsRunning(false)
             wordInSecond = ((startingTime-timeRemaining) / calWordsCount()).toFixed(2)  
             setSpeed(wordInSecond)  
@@ -96,8 +96,8 @@ export default function useTypeGame(startingTime = 30) {
         }
 
     }
-    console.log(formData.length)
-    console.log(String(randomQuote.q).length)
+   // console.log(formData.length)
+   // console.log(String(randomQuote.q).length)
         wordInSecond()
         // Run every 1000ms, without needing to rely on a re-render.
         if (timeIsRunning) {
